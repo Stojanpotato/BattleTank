@@ -12,7 +12,10 @@ enum class EFiringState :uint8 {
 	Reloading,
 	Aiming,
 	Locked,
+	OutOfAmmo
 };
+
+
 
 class UTankBarrel;
 class UTankTurret;
@@ -32,6 +35,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
+
+	EFiringState GetFiringState() const;
 
 protected:
 	// Called when the game starts
@@ -61,4 +66,8 @@ public:
 
 	double LastFireTime = 0;
 	FVector AimDirection;
+	int RoundsLeft = 3;
+
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	int GetRoundsLeft() const;
 };
