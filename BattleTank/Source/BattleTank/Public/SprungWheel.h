@@ -20,8 +20,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	UPROPERTY(VisibleAnywhere, Category = Components)
-		UStaticMeshComponent* Mass = nullptr;
+	
 
 	UPROPERTY(VisibleAnywhere, Category = Components)
 		UStaticMeshComponent* Wheel = nullptr;
@@ -32,7 +31,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	void SetupConstraints();
 	
 	
 };
