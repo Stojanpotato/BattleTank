@@ -22,11 +22,11 @@ ASprungWheel::ASprungWheel()
 void ASprungWheel::BeginPlay()
 {
 	Super::BeginPlay();
-
+	SetupConstraints();
 }
 
 void ASprungWheel::SetupConstraints() {
-	if (GetAttachParentActor())return;
+	if (!GetAttachParentActor())return;
 	UPrimitiveComponent* BodyRoot = Cast<UPrimitiveComponent>(GetAttachParentActor()->GetRootComponent());
 	if (!BodyRoot)return;
 	MassWheelConstraint->SetConstrainedComponents(BodyRoot, NAME_None, Wheel, NAME_None);
