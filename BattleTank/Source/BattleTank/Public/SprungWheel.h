@@ -22,6 +22,11 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	void ApplyForce();
+
 	UPROPERTY(VisibleAnywhere, Category = Components)
 		USphereComponent* Wheel = nullptr;
 
@@ -34,6 +39,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = Components)
 		UPhysicsConstraintComponent* AxleWheelConstraint = nullptr;
 
+	float TotalForceMagnitutedThisFrame = 0;
 
 public:	
 	// Called every frame
